@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block script %}
+<script src="{{url_for('static', filename='scripts.js')}}"></script>
+{% endblock %}
+
+{% block main %}
+	<form action="/register" method="post" id="registerForm" novalidate onsubmit="registerCheck(event)">
+		<div class="mb-3">
+			<label for="username" class="form-label">Username</label>
+			<input type="text" class="form-control" id="username" name="username" required autofocus autocomplete="off" minlength="2" oninput="checker()">
+			<span class="error" aria-live="polite" id="nameerror"></span>
+		</div>
+		<div class="mb-3">
+			<label for="password" class="form-label">Password</label>
+			<input type="password" class="form-control" id="password" name="password" required minlength="5">
+			<span class="error" aria-live="polite" id="passerror"></span>
+		</div>
+		<div class="mb-3">
+			<label for="c_password" class="form-label">Confirm Password</label>
+			<input type="password" class="form-control" id="c_password" name="c_password" required minlength="5">
+			<span class="error" aria-live="polite" id="confirmerror">{{ msg }}</span>
+		</div>
+		 <button type="submit" class="btn btn-primary" onclick="checker()">Register</button>
+	</form>
+{% endblock %}

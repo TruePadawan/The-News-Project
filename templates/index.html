@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block script %}
+<script src="{{url_for('static', filename='content.js')}}"></script>
+{% endblock %}
+{% block main %}
+
+
+	<template id="post_template">
+		<article>
+			<div class="card">
+				<div class="card-header" id="head"></div>
+				<img src="" class="card-img-top" alt="Image" id="img">
+				<div class="card-body">
+					<h5 class="card-title" style="font-weight: bold;" id="ptitle"></h5>
+					<p class="font-monospace" id="des"></p>
+					<a href="" class="btn btn-primary" target="_blank" id="lnk">Go to Article</a>
+				</div>
+			</div>
+		</article>
+	</template>
+
+
+	{% for row in data %}
+		<article>
+			<div class="card">
+				<div class="card-header" style="font-style: italic; color: grey">
+    				{{ row["source"]["name"] }}
+  				</div>
+				{% if row['urlToImage'] %}
+					<img src="{{ row['urlToImage'] }}" class="card-img-top" alt="Image">
+				{% endif %}
+				<div class="card-body">
+					<h5 class="card-title" style="font-weight: bold;">{{ row["title"]}} </h5>
+					<p class="font-monospace">{{ row["description"] }}</p>
+					<a href="{{ row['url'] }}" class="btn btn-primary" target="_blank">Go to Article</a>
+				</div>
+			</div>
+		</article>
+	{% endfor %}
+{% endblock %}

@@ -1,0 +1,37 @@
+label {
+	color: black;
+}
+
+main .form-control
+{
+    /* Override Bootstrap's 100% width for form controls */
+    width: 100%;
+}
+
+main form
+{
+	width: 50%;
+	margin: auto;
+	margin-top: 5rem;
+}
+
+
+.acct {
+	margin-left: auto;
+}
+
+span {
+	color: red;
+}
+
+.card {
+	margin: auto;
+	margin-top: 0.6rem;
+	background-color: whitesmoke;
+}
+
+@media screen and (min-width: 768px) {
+  .card {
+    width: 35rem;
+  }
+}
