@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block search %}
+	<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+		<div class="container-xxl d-flex align-items-md-center">
+			<form class="bd-search position-relative me-auto" action="/search" method="post">
+      			<input type="search" class="form-control" id="search-input" name="search-input" placeholder="Search for news" aria-label="Search for news" autocomplete="off">
+    		</form>
+		</div>
+	</nav>
+{% endblock %}
+
+{% block main %}
+	{% for row in data %}
+		<article>
+			<div class="card">
+				<div class="card-header" style="font-style: italic; color: grey">
+    				{{ row["source"]["name"] }}
+  				</div>
+				{% if row['urlToImage'] %}
+					<img src="{{ row['urlToImage'] }}" class="card-img-top" alt="Image">
+				{% endif %}
+				<div class="card-body">
+					<h5 class="card-title" style="font-weight: bold;">{{ row["title"]}} </h5>
+					<p class="font-monospace">{{ row["description"] }}</p>
+					<a href="{{ row['url'] }}" class="btn btn-outline-dark" target="_blank">Go to Article</a>
+				</div>
+			</div>
+		</article>
+	{% endfor %}
+{% endblock %}
