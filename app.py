@@ -29,7 +29,7 @@ Session(app)
 def index():
 	data = getNews()
 	session["pages"] = int(data["totalResults"]/10)
-	print(session["pages"])
+	session["category"] = "general"
 	data = data["articles"]
 	return render_template("index.html", data=data)
 
@@ -46,9 +46,17 @@ def load():
 			res = make_response(jsonify({}), 200)
 		else:
 			newsapi = NewsApiClient(api_key='e4d87e0f7a344caab7bb41c4f7318e84')
-			top_headlines = newsapi.get_top_headlines(language='en', page_size=10, page=page)
+			top_headlines = newsapi.get_top_headlines(language='en', page_size=10, page=page, category=session["category"])
 			res = make_response(jsonify(top_headlines), 200)
 	return res
+
+@app.route('/category/<ext>')
+def category(ext):
+	newsapi = NewsApiClient(api_key='e4d87e0f7a344caab7bb41c4f7318e84')
+	data = newsapi.get_top_headlines(language='en', page_size=10, category=ext)
+	session["category"] = ext
+	data = data["articles"]
+	return render_template("index.html", data=data)
 
 @app.route('/search', methods=["POST"])
 def search():
