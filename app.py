@@ -1,5 +1,5 @@
 from flask import Flask, redirect, render_template, request, session, make_response, jsonify
-from helpers import login_required, getNews
+from helpers import login_required, getNews, searchNews
 from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -49,6 +49,18 @@ def load():
 			top_headlines = newsapi.get_top_headlines(language='en', page_size=10, page=page)
 			res = make_response(jsonify(top_headlines), 200)
 	return res
+
+@app.route('/search', methods=["POST"])
+def search():
+	search = request.form.get("search-input")
+	print(search)
+	if search != None:
+		data = searchNews(search)
+		session["pages"] = int(data["totalResults"]/10)
+		data = data["articles"]
+		print(data)
+		return render_template("search.html", data=data)
+
 @app.route('/login', methods=["GET", "POST"])
 def login():
 	## LOGIN THE USER

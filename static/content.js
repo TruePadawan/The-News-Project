@@ -16,8 +16,12 @@ function loadItems () {
 				let template_clone = template.content.cloneNode(true);
 				template_clone.getElementById("head").textContent = obj[i]["source"]["name"];
 				
-				if (obj[i]["urlToImage"]){
+				if (obj[i]["urlToImage"] != null){
 					template_clone.querySelector("#img").src = obj[i]["urlToImage"];
+				}else
+				{
+					let myimg = template_clone.querySelector("#img");
+					myimg.remove();
 				}
 				
 				template_clone.querySelector("#ptitle").textContent = obj[i]["title"];

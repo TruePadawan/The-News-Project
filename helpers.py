@@ -19,6 +19,11 @@ def login_required(f):
 
 def getNews():
     newsapi = NewsApiClient(api_key='e4d87e0f7a344caab7bb41c4f7318e84')
-    top_headlines = newsapi.get_top_headlines(language='en',
-                                                page_size=10)
-    return top_headlines
+    news = newsapi.get_top_headlines(language='en', page_size=10)
+    return news
+
+def searchNews(info):
+    newsapi = NewsApiClient(api_key='e4d87e0f7a344caab7bb41c4f7318e84')
+    news = newsapi.get_everything(qintitle="+"+info, language='en', page_size=20, sort_by='relevancy', 
+    from_param=date.today(), to=date.today(), exclude_domains='theonlinecitizen.com,investmentwatchblog.com,protothema.gr,dailymail.co.uk,adweek.com,twit.tv,sankakucomplex.com,guru3d.com,news.com.au,developers.google.com,punchng.com')
+    return news
