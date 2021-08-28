@@ -1,0 +1,6 @@
+Flask==2.0.1
+Flask_Session==0.4.0
+Werkzeug==2.0.1
+newsapi_python==0.2.6
+newsapi==0.1.1
+gunicorn
