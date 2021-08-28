@@ -28,11 +28,28 @@
 				The News Project
 			</a>
 
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+			<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#contact">Contact Me</button>
 
-			<div class="collapse navbar-collapse" id="navbar">
+			<div class="modal fade" id="contact" tabindex="-1" aria-labelledby="contactTitle" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="contactTitle">Contact</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<strong><p><a href="https://www.twitter.com/TruePadawan" target="_blank">Twitter</a></p></strong>
+							<strong><p><a href="https://web.facebook.com/yung.padawan.9/" target="_blank">Facebook</a></p></strong>
+							<strong><p><a href="https://www.linkedin.com/in/hermes-chigoziri-919148204/" target="_blank">LinkedIn</a></p></strong>
+							<strong>Discord - Hermes#5782</strong>
+						</div>
+						<div class="modal-footer">
+					        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					    </div>
+					</div>
+				</div>
+			</div>
+			<!-- <div class="collapse navbar-collapse" id="navbar">
 				{% if session.user_id %}
 				<div class="navbar-nav acct">
 					<a class="nav-link" href="/logout">Logout</a>
@@ -43,7 +60,7 @@
 					<a class="nav-link" href="/register">Register</a>
 				</div>
 				{% endif %}
-			</div>
+			</div> -->
 
 		</div>
 

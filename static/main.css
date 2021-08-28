@@ -37,6 +37,9 @@ span {
 	border-radius: 5px;
 }
 
+a {
+	text-decoration: none;
+}
 @media screen and (min-width: 768px) {
   .card {
     width: 35rem;
