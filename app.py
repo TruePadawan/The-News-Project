@@ -28,7 +28,7 @@ Session(app)
 @app.route('/')
 def index():
 	data = getNews()
-	session["pages"] = int(data["totalResults"]/10)
+	session["pages"] = int(data["totalResults"]/25)
 	session["category"] = "general"
 	data = data["articles"]
 	return render_template("index.html", data=data)
@@ -64,7 +64,7 @@ def search():
 	print(search)
 	if search != None:
 		data = searchNews(search)
-		session["pages"] = int(data["totalResults"]/10)
+		session["pages"] = int(data["totalResults"]/25)
 		data = data["articles"]
 		return render_template("search.html", data=data)
 

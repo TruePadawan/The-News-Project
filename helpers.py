@@ -19,7 +19,7 @@ def login_required(f):
 
 def getNews():
     newsapi = NewsApiClient(api_key='e4d87e0f7a344caab7bb41c4f7318e84')
-    news = newsapi.get_top_headlines(language='en', page_size=10)
+    news = newsapi.get_top_headlines(language='en', page_size=25)
     return news
 
 def searchNews(info):
