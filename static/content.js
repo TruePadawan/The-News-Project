@@ -37,7 +37,6 @@ function loadItems () {
 function createObserver ()
 {
 	let sentinel = document.querySelector("#sentinel");
-	let observer;
 
 	let options = {
 		root: null,
@@ -45,7 +44,7 @@ function createObserver ()
 		threshold: 0.1
 	};
 
-	observer = new IntersectionObserver(loadItems, options);
+	let observer = new IntersectionObserver(loadItems, options);
 	observer.observe(sentinel);
 }
 

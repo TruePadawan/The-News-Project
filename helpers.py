@@ -5,11 +5,6 @@ from newsapi import NewsApiClient
 import json
 
 def login_required(f):
-    """
-    Decorate routes to require login.
-
-    https://flask.palletsprojects.com/en/1.1.x/patterns/viewdecorators/
-    """
     @wraps(f)
     def decorated_function(*args, **kwargs):
         if session.get("user_id") is None:
@@ -19,13 +14,12 @@ def login_required(f):
 
 def getNews():
     newsapi = NewsApiClient(api_key='e4d87e0f7a344caab7bb41c4f7318e84')
-    news = newsapi.get_top_headlines(language='en', page_size=25)
+    news = newsapi.get_top_headlines(language='en', page_size=20, category="general", page=1)
     return news
 
 def searchNews(info):
     before = date.today()
     before = before.replace(month=(date.today().month - 1))
-    print(before)
     newsapi = NewsApiClient(api_key='e4d87e0f7a344caab7bb41c4f7318e84')
     news = newsapi.get_everything(qintitle=info, language='en', page_size=20, 
     from_param=before, to=date.today(), 

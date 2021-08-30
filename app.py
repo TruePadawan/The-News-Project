@@ -28,8 +28,9 @@ Session(app)
 @app.route('/')
 def index():
 	data = getNews()
-	session["pages"] = int(data["totalResults"]/25)
+	session["pages"] = int(data["totalResults"]/20)
 	session["category"] = "general"
+	print("Total Result", data["totalResults"])
 	data = data["articles"]
 	return render_template("index.html", data=data)
 
@@ -39,14 +40,14 @@ def load():
 	time.sleep(0.2)
 	if request.args:
 		page = int(request.args.get("p"))
-		if page > session["pages"]:
-			print(page)
-			print(session["pages"])
+		if page+1 > session["pages"]:
 			print("No more posts")
 			res = make_response(jsonify({}), 200)
 		else:
+			print(page)
+			print(session["pages"])
 			newsapi = NewsApiClient(api_key='e4d87e0f7a344caab7bb41c4f7318e84')
-			top_headlines = newsapi.get_top_headlines(language='en', page_size=10, page=page, category=session["category"])
+			top_headlines = newsapi.get_top_headlines(language='en', page_size=10, page=page+1, category=session["category"])
 			res = make_response(jsonify(top_headlines), 200)
 	return res
 
@@ -64,7 +65,7 @@ def search():
 	print(search)
 	if search != None:
 		data = searchNews(search)
-		session["pages"] = int(data["totalResults"]/25)
+		session["pages"] = int(data["totalResults"]/20)
 		data = data["articles"]
 		return render_template("search.html", data=data)
 
