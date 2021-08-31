@@ -4,13 +4,13 @@ from datetime import date
 from newsapi import NewsApiClient
 import json
 
-def login_required(f):
-    @wraps(f)
-    def decorated_function(*args, **kwargs):
-        if session.get("user_id") is None:
-            return redirect("/login")
-        return f(*args, **kwargs)
-    return decorated_function
+# def login_required(f):
+#     @wraps(f)
+#     def decorated_function(*args, **kwargs):
+#         if session.get("user_id") is None:
+#             return redirect("/login")
+#         return f(*args, **kwargs)
+#     return decorated_function
 
 def getNews():
     newsapi = NewsApiClient(api_key='e4d87e0f7a344caab7bb41c4f7318e84')
