@@ -20,3 +20,5 @@ A simple and responsive news site built using some of the technologies I learned
 * templates/search.html : An almost exact replica of the index page but it serves as a page for search query results, It contains HTML and Jinja template code.
 
 * templates/login.html + register.html : Disabled pages that were meant to serve as a means for users to login or register an account on the site, It contains HTML and Jinja template code.
+
+About the login and register feature, I wanted the user to be able to create an account on the website and then have their news feed customized so that they only see news based on their specified interests but I ended up not implementing that feature because it would have been complex for my skill level and it also deviates from what I had in mind from my project which is a simple news site where users just see trending news rather than trying to make a simple Quora clone.
