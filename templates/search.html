@@ -6,6 +6,21 @@
 			<form class="bd-search position-relative me-auto" action="/search" method="post">
       			<input type="search" class="form-control" id="search-input" name="search-input" placeholder="Search for news" aria-label="Search for news" autocomplete="off">
     		</form>
+		<ul class="navbar-nav">
+	    		<li class="nav-item dropdown">
+		          <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+		            Category
+		          </a>
+		          <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
+		            <li><a class="dropdown-item" href="/category/business">Business</a></li>
+		            <li><a class="dropdown-item" href="/category/entertainment">Entertainment</a></li>
+		            <li><a class="dropdown-item" href="/category/health">Health</a></li>
+		            <li><a class="dropdown-item" href="/category/science">Science</a></li>
+		            <li><a class="dropdown-item" href="/category/sports">Sports</a></li>
+		            <li><a class="dropdown-item" href="/category/technology">Technology</a></li>
+		          </ul>
+		        </li>
+	    	</ul>
 		</div>
 	</nav>
 {% endblock %}
